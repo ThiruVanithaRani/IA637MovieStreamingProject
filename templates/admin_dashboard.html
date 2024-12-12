@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+<h3>Manage Movies</h3>
+
+<form method="POST" action="/admin">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="genre" class="form-label">Genre</label>
+        <input type="text" class="form-control" id="genre" name="genre" required>
+    </div>
+    <button type="submit" name="action" value="add" class="btn btn-success">Add Movie</button>
+</form>
+
+<h3>Assign Movie to Streaming Platform</h3>
+<form method="POST" action="/admin/movie_platform">
+    <div class="mb-3">
+        <label for="movie_id" class="form-label">Movie</label>
+        <select id="movie_id" name="movie_id" class="form-control" required>
+            {% for movie in movies %}
+            <option value="{{ movie.MovieID }}">{{ movie.Title }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="platform_id" class="form-label">Streaming Platform</label>
+        <select id="platform_id" name="platform_id" class="form-control" required>
+            {% for platform in platforms %}
+            <option value="{{ platform.PlatformID }}">{{ platform.PlatformName }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="start_date" class="form-label">Start Date</label>
+        <input type="date" id="start_date" name="start_date" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="end_date" class="form-label">End Date</label>
+        <input type="date" id="end_date" name="end_date" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Assign</button>
+</form>
+
+<h3>Current Movies</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Genre</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie['Title'] }}</td>
+            <td>{{ movie['Description'] }}</td>
+            <td>{{ movie['Genre'] }}</td>
+            <td>
+                <a href="/admin/update/{{ movie['MovieID'] }}" class="btn btn-primary btn-sm">Update</a>
+                <form method="POST" action="/admin" style="display:inline;">
+                    <input type="hidden" name="movie_id" value="{{ movie['MovieID'] }}">
+                    <button type="submit" name="action" value="delete" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Registered Users</h3>
+<p>Total Users: <strong>{{ total_users }}</strong></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.UserID }}</td>
+            <td>{{ user.UserName }}</td>
+            <td>{{ user.UserType }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

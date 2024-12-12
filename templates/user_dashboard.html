@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Available Movies</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Genre</th>
+            <th>Streaming Platform</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Average Rating</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie['Title'] }}</td>
+            <td>{{ movie['Description'] }}</td>
+            <td>{{ movie['Genre'] }}</td>
+            <td>{{ movie['Platform'] }}</td>
+            <td>{{ movie['StartDate'] }}</td>
+            <td>{{ movie['EndDate'] }}</td>
+            <td>{{ movie['AvgRating']|round(2) }}</td> <!-- Round to 2 decimal places -->
+            <td>
+                <a href="/user/rate/{{ movie['MovieID'] }}" class="btn btn-primary btn-sm">Rate</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="/user/watched" class="btn btn-secondary">View Watched Movies</a>
+<a href="/user/trending" class="btn btn-info">Trending Movies</a>
+{% endblock %}

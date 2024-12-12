@@ -7,7 +7,6 @@ from db_utils import add_rating_and_comment, fetch_movies, assign_movie_to_platf
 import hashlib
 from flask_session import Session
 from flask import Flask, session
-from werkzeug.security import generate_password_hash
 
 app = Flask(__name__)
 app.secret_key = "e5bff5a6e28747a67d8df8c678f5e6f3e7a9b123456789ab"
@@ -49,7 +48,7 @@ def register():
         username = request.form['username']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
-        hashed_password = generate_password_hash(password)
+        hashed_password = hash_password(password)
 
         if password != confirm_password:
             flash('Passwords do not match!', 'danger')

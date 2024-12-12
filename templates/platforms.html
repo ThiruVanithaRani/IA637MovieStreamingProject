@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Manage Platforms</h2>
+<form method="POST" action="/admin/platforms">
+    <input type="text" name="platform_name" placeholder="Platform Name" required>
+    <button type="submit" name="action" value="add">Add</button>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Platform ID</th>
+            <th>Platform Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for platform in platforms %}
+        <tr>
+            <td>{{ platform.PlatformID }}</td>
+            <td>{{ platform.PlatformName }}</td>
+            <td>
+                <form method="POST" action="/admin/platforms">
+                    <input type="hidden" name="platform_id" value="{{ platform.PlatformID }}">
+                    <button type="submit" name="action" value="delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

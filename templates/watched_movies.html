@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Watched Movies</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Rating</th>
+            <th>Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie['Title'] }}</td>
+            <td>{{ movie['Rating'] }}</td>
+            <td>{{ movie['Comment'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
