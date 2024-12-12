@@ -1,4 +1,4 @@
-1. Project Title
+## Project Title
 Movie Streaming Platform
 2. Group Members
 •	Thiru Vanitha Rani Veluchamy
