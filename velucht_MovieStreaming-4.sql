@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db:3306
--- Generation Time: Dec 12, 2024 at 12:58 AM
+-- Generation Time: Dec 14, 2024 at 11:31 PM
 -- Server version: 8.0.34
 -- PHP Version: 8.2.8
 
@@ -48,7 +48,8 @@ INSERT INTO `Movies` (`MovieID`, `Title`, `Description`, `Genre`) VALUES
 (11, 'Soorarai Potru', 'Maaran started an airline and wants non-rich people also fly', 'Motivation'),
 (15, 'Transformers', 'Aliens protecting humans as robotic cars', 'animation'),
 (18, 'Amaran', 'An Army Man and his Family\'s Story', 'Emotional Motivational'),
-(19, 'Avengers', 'Superheroes saving the world from villains', 'Fantasy');
+(19, 'Avengers', 'Superheroes saving the world from villains', 'Fantasy'),
+(30, 'Transformers4', 'Aliens saving earth', 'Fantasy');
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,8 @@ INSERT INTO `MovieStreamingPlatforms` (`ID`, `MovieID`, `PlatformID`, `StartDate
 (8, 15, 2, '2025-08-22', '2026-04-16'),
 (10, 18, 4, '2024-12-07', '2025-09-20'),
 (11, 19, 4, '2024-12-14', '2025-07-19'),
-(12, 15, 3, '2024-12-08', '2024-12-21');
+(12, 15, 3, '2024-12-08', '2024-12-21'),
+(16, 30, 3, '2024-12-06', '2025-01-24');
 
 -- --------------------------------------------------------
 
@@ -120,17 +122,19 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`UserID`, `UserName`, `Password`, `UserType`) VALUES
-(1, 'admin', 'abda260dc78e2fdef997cccce1be6a0c', 'admin'),
-(2, 'user1', '0d7740c8e2cf9e3c6320f4d702cc8354', 'user'),
-(3, 'user2', '34e497556df68dd71d832219d3de4771', 'user'),
-(4, 'user3', '780725bfff0d39b1cc9d9b81dfe07641', 'user'),
-(5, 'user4', 'cbc0d20bec760816981886cd686db4fd', 'user'),
-(6, 'user5', '3bb3a0bf6bd3c902eb07f07a14f348ee', 'user'),
-(7, 'user6', '9ee46766111a5a36a9386642e668aece', 'user'),
-(10, 'user7', '989cb2b9cb7c1c368c5a5743b52649f0', 'user'),
+(1, 'admin', 'password123', 'admin'),
+(2, 'user1', 'userpass', 'user'),
+(3, 'user2', 'userpass2', 'user'),
+(4, 'user3', 'userpass3', 'user'),
+(5, 'user4', 'userpass4', 'user'),
+(6, 'user5', 'userpass5', 'user'),
+(7, 'user6', 'userpass6', 'user'),
+(10, 'user7', 'userpass7', 'user'),
 (11, 'user8', 'userpass8', 'user'),
 (12, 'user9', 'userpass9', 'user'),
-(13, 'user10', 'userpass10', 'user');
+(13, 'user10', 'userpass10', 'user'),
+(14, 'user11', 'userpass11', 'user'),
+(15, 'user12', 'userpass12', 'user');
 
 -- --------------------------------------------------------
 
@@ -184,7 +188,9 @@ INSERT INTO `WatchedMovies` (`ID`, `UserID`, `MovieID`, `Rating`, `Comment`, `Ti
 (33, 3, 19, 3, 'Average Movie', '2024-12-12 00:03:34'),
 (34, 10, 1, 5, 'good', '2024-12-12 00:36:32'),
 (35, 4, 2, 3, 'good', '2024-12-12 00:51:33'),
-(36, 2, 3, 3, 'good', '2024-12-12 00:54:58');
+(36, 2, 3, 3, 'good', '2024-12-12 00:54:58'),
+(37, 15, 30, 5, 'Good movie', '2024-12-14 23:29:24'),
+(38, 2, 30, 5, 'Good movie', '2024-12-14 23:30:46');
 
 --
 -- Indexes for dumped tables
@@ -232,13 +238,13 @@ ALTER TABLE `WatchedMovies`
 -- AUTO_INCREMENT for table `Movies`
 --
 ALTER TABLE `Movies`
-  MODIFY `MovieID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `MovieID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `MovieStreamingPlatforms`
 --
 ALTER TABLE `MovieStreamingPlatforms`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `StreamingPlatforms`
@@ -250,7 +256,7 @@ ALTER TABLE `StreamingPlatforms`
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `UserID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `UserID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `WatchedMovies`

@@ -8,6 +8,7 @@ import hashlib
 from flask_session import Session
 from flask import Flask, session
 
+
 app = Flask(__name__)
 app.secret_key = "e5bff5a6e28747a67d8df8c678f5e6f3e7a9b123456789ab"
 
@@ -17,15 +18,15 @@ app.secret_key = "e5bff5a6e28747a67d8df8c678f5e6f3e7a9b123456789ab"
 def home():
     return redirect(url_for('login'))
 
-def hash_password(password):
+'''def hash_password(password):
     salt = 'xyz'  # Add a salt to the password for better security
-    return hashlib.md5((password + salt).encode('utf-8')).hexdigest()
+    return hashlib.md5((password + salt).encode('utf-8')).hexdigest()'''
     
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
-        password = hash_password(request.form['password'])
+        password = request.form['password']
         user = get_user(username, password)
         
         if user:
@@ -48,7 +49,6 @@ def register():
         username = request.form['username']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
-        hashed_password = hash_password(password)
 
         if password != confirm_password:
             flash('Passwords do not match!', 'danger')

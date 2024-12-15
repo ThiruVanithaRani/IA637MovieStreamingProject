@@ -60,6 +60,15 @@ This project is a web-based movie streaming platform application designed to all
     - Provides feedback on movies:
     - Rate movies on a scale to express their opinion.
     - Leave comments on movies to share their thoughts.
+
+#### Example credentials
+- **Example UserName and password:**
+    - **Admin:**
+    - UserName:admin
+    - Password:password123
+    - **User:**
+    - UserName:user1
+    - Password:userpass
 ## Database Design
 #### Tables:
 - Users: Stores user information (UserID, UserName, Password, UserType)
